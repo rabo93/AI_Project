@@ -57,31 +57,24 @@
 
 src/main/java
 
-ㄴ com.winbit.project
+    ㄴ com.winbit.project
 
-ㄴ config
+        ㄴ config
 
-ㄴ WebClientConfig.java
+            ㄴ WebClientConfig.java
 
-ㄴ controller
+    ㄴ controller
 
-ㄴ ChatbotController.java
+        ㄴ ChatbotController.java
 
-ㄴ service
+    ㄴ service
 
-ㄴ OpenAIService.java
+        ㄴ OpenAIService.java
 
-ㄴ DocumentChatbotApplication.java
+    ㄴ DocumentChatbotApplication.java
 
 src/main/resources
 
-ㄴ templates
+    ㄴ templates
 
-ㄴ chatbot.html
-
-- applicaiton.properties
-
-#OpenAI API Key
-openai.api.key=sk-….
-openai.model=gpt-4.1-mini
-openai.api.url=https://api.openai.com/v1/chat/completions
+        ㄴ chatbot.html
