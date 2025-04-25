@@ -1,0 +1,23 @@
+<!-- fragments/header.html -->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<header th:fragment="topbarFragment">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<div class="logo">
+				<a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/winbit_logo.png}" alt="logo"></a>
+			</div>
+			
+			<!-- 제목 -->
+			<h1 class="header-title">AI Project - LLM</h1>
+			
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/login}">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/join}">회원가입</a></li>
+<!--                    <li class="nav-item"><a class="nav-link" th:href="@{/board}">게시판</a></li>-->
+<!--                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">미정</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

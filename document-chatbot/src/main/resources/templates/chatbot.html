@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" >
+<!-- <html xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  -->
+<!-- 		layout:decorate="~{layouts/layout}"> -->
+<head>
+	<title layout:fragment="title">챗봇 Q&A</title>
+	<link href="/css/chatbot.css" rel="stylesheet">
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="chatbot-title">🤖 ChatBORA 🤖</div>
+		<div class="chat-container">
+<!-- 		    <div class="messages"> -->
+<!-- 		        사용자 질문 -->
+<!-- 		        <div th:if="${param.question != null}" class="message user"> -->
+<!-- 		            [[${param.question}]] -->
+<!-- 		        </div> -->
+		
+<!-- 		        챗봇 답변 -->
+<!-- 		        <div th:if="${answer != null}" class="message bot"> -->
+<!-- 		            [[${answer}]] -->
+<!-- 		        </div> -->
+<!-- 		    </div> -->
+
+		    <!-- 대화 내역 출력하기 -->
+		    <div class="messages">
+		    	<div th:each="msg : ${chatHistory}" 
+				     th:class="'message ' + (${msg.role} == 'user' ? 'user' : 'bot')">
+<!-- 				    <pre th:text="${msg.content}"></pre> pre 태그는 줄바꿈과 공백을 그대로 출력 -->
+					<div th:utext="${msg.content}"></div> <!-- HTML 렌더링 허용 -->
+				</div>
+		    </div>
+		
+		    <!-- 질문 입력창 -->
+		    <form class="chat-form" action="/chatbot/question" method="post">
+		        <input type="text" name="question" placeholder="질문을 입력하세요." required>
+		        <button type="submit">전송</button>
+		    </form>
+		    
+		</div>
+	    <form class="chat-form" action="/chatbot/reset" method="get">
+		    <button type="submit">대화 초기화</button>
+		</form>
+	</div>
+	
+	
+	
+	<!-- JS -->
+	<script src="js/jquery-3.7.1.js"></script>
+	<th:block layout:fragment="script">
+		<script>
+			window.addEventListener("beforeunload", function() {
+				navigator.sendBeacon("/chatbot/reset");
+			});
+		
+		</script>
+	</th:block>
+	
+	
+</body>
+</html>

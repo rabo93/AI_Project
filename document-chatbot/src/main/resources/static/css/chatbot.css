@@ -1,0 +1,105 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+.chatbot-title {
+	text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.chat-container {
+	width: 700px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+	flex: 1;
+    overflow-y: auto;
+    max-height: 600px; /* 더 큰 높이로 */
+    padding: 0 10px 10px 10px;
+    margin-bottom: 10px;
+}
+
+.message {
+	margin: 12px 0;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+/*     white-space: pre-wrap; */
+    box-sizing: border-box;
+}
+.message.user {
+	background-color: #dcf8c6;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.message.bot {
+	background-color: #f1f0f0;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.message pre,
+.message code {
+    white-space: pre-wrap;      /* 줄바꿈 유지하면서 자동 줄바꿈 */
+    word-wrap: break-word;      /* 너무 긴 단어는 끊어서 줄바꿈 */
+    overflow-x: auto;           /* 넘칠 경우 가로 스크롤 */
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    display: block;
+    margin: 5px 0;
+    max-width: 100%;            /* 부모 너비를 넘지 않도록 제한 */
+    box-sizing: border-box;
+}
+
+.user {
+    align-self: flex-end;
+    background: #dcf8c6;
+}
+
+.bot {
+    align-self: flex-start;
+    background: #f1f0f0;
+}
+
+.chat-form {
+    display: flex;
+    margin-top: 15px;
+}
+
+.chat-form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.chat-form button {
+    padding: 10px 15px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+

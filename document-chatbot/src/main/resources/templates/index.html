@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+		layout:decorate="~{layouts/layout}">
+<head>
+<!-- 	<title layout:fragment="title">index.html</title> -->
+	<!-- Custom styles for this template -->
+	<!--	<link href="/css/main.css" rel="stylesheet">-->
+</head>
+<body>
+	<div layout:fragment="content">
+		<!-- 제목 -->
+<!-- 		<header class="mb-4"> -->
+<!-- 			<h1 class="fw-bolder mb-1">LLM Project</h1> -->
+<!-- 	        Post categories -->
+<!-- <!--	        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>-->
+<!-- <!--	        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>-->
+<!-- 	    </header> -->
+		
+		<div class="text-muted fst-italic mb-2">챗봇 아이콘을 클릭하여 채팅을 시작하세요!</div>
+		<br>
+		<div class="icon">
+			<a class="chatbot-icon" th:href="@{/chatbot}"><img th:src="@{/images/free-icon-bot-11189317.png}" alt="chatbot"></a>
+		</div>
+		
+		
+	</div>
+	
+	<!-- JS -->
+	<script src="js/jquery-3.7.1.js"></script>
+	<th:block layout:fragment="script">
+		<script>
+		</script>
+	</th:block>
+</body>
+</html>
