@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" >
+<!-- <html xmlns:th="https://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  -->
+<!-- 		layout:decorate="~{layouts/layout}"> -->
+<head>
+	<title layout:fragment="title">챗봇 Q&A</title>
+	<link href="/css/chatbot.css" rel="stylesheet">
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="chatbot-title">PDF 문서 요약기</div>
+		<div class="chat-container">
+
+		
+<!-- 		<p>문서 요약 기능</p> -->
+			<!-- index.html에 표시될 영역 설정 -->
+			<div th:fragment="pdfUploadForm">
+<!-- 			<div th:replace="pdf_summary :: pdfUploadForm"> -->
+				<!-- 문서 업로드 -->
+			    <form class="upload-form" action="/pdf/upload" method="post" enctype="multipart/form-data" >
+			    	<input type="file" name="file"  id="fileInput" class="file-input" accept=".pdf" required>
+			    	<!-- 사용자에게 보여지는 커스텀 파일 선택 버튼 -->
+			    	<label for="fileInput" class="file-label">
+<!-- 			    	<a class="pdf-icon" th:href="@{/pdfSummary}"> -->
+			    		<img th:src="@{/images/free-icon-font-file-pdf-9254506.png}" alt="pdf"> 파일선택
+<!-- 		    		</a> -->
+			    	</label>
+			    	<!-- 선택된 파일 이름 표시 -->
+			    	<span id="fileName" class="file-name">첨부된 파일 없음</span>
+			    	<button type="submit">업로드</button>
+			    </form>
+		    </div>
+		    
+		    <!-- 결과 출력하기 -->
+		    <div class="messages">
+		    	<div th:each="msg : ${pdfHistory}" 
+				     th:class="'message ' + (${msg.role} == 'user' ? 'user' : 'bot')">
+<!-- 				    <pre th:text="${msg.content}"></pre> pre 태그는 줄바꿈과 공백을 그대로 출력 -->
+					<div th:utext="${msg.content}"></div> <!-- HTML 렌더링 허용 -->
+				</div>
+		    </div>
+		</div>
+		
+		
+		<div class="chatbot-icon-container">
+			<a class="chatbot-icon" th:href="@{/pdfSummary}"><img th:src="@{/images/free-icon-reset-9899316.png}" alt="reset"></a>
+			<a class="chatbot-icon" th:href="@{/}"><img th:src="@{/images/free-icon-font-home-3917743.png}" alt="home"></a>
+		</div>
+	</div>
+	
+	
+	
+	<!-- JS -->
+	<script src="js/jquery-3.7.1.js"></script>
+	<th:block layout:fragment="script">
+		<script>
+			// 브라우저 창을 닫거나 새로고침, 다른 페이지로 이동할 때 발생하는 이벤트
+// 			window.addEventListener("beforeunload", function() {
+// 				navigator.sendBeacon("/pdfSummary/reset");
+// 			});
+			
+			// 첨부 파일명 미리보기
+			document.addEventListener("DOMContentLoaded", function() {
+				const fileInput = document.getElementById("fileInput");
+				const fileName = document.getElementById("fileName");
+				fileInput.addEventListener("change", function() {
+					if (fileInput.files.length > 0) {
+						fileName.textContent = fileInput.files[0].name;
+					} else {
+						fileName.textContent = "선택된 파일 없음";
+					}
+				});
+			});
+			
+		</script>
+	</th:block>
+	
+	
+</body>
+</html>

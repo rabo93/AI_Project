@@ -33,6 +33,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	// Markdown → HTML 렌더링
 	implementation 'com.vladsch.flexmark:flexmark-all:0.64.0'
+	// Apache PDFBox
+	implementation group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.31'
 	
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

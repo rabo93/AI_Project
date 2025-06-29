@@ -10,18 +10,6 @@
 	<div layout:fragment="content">
 		<div class="chatbot-title">🤖 ChatBORA 🤖</div>
 		<div class="chat-container">
-<!-- 		    <div class="messages"> -->
-<!-- 		        사용자 질문 -->
-<!-- 		        <div th:if="${param.question != null}" class="message user"> -->
-<!-- 		            [[${param.question}]] -->
-<!-- 		        </div> -->
-		
-<!-- 		        챗봇 답변 -->
-<!-- 		        <div th:if="${answer != null}" class="message bot"> -->
-<!-- 		            [[${answer}]] -->
-<!-- 		        </div> -->
-<!-- 		    </div> -->
-
 		    <!-- 대화 내역 출력하기 -->
 		    <div class="messages">
 		    	<div th:each="msg : ${chatHistory}" 
@@ -31,31 +19,34 @@
 				</div>
 		    </div>
 		
-		    <!-- 질문 입력창 -->
-		    <form class="chat-form" action="/chatbot/question" method="post">
-		        <input type="text" name="question" placeholder="질문을 입력하세요." required>
-		        <button type="submit">전송</button>
-		    </form>
-		    
+			
+			<!-- index.html에 표시될 영역 설정 -->
+			<div th:fragment="mainChatFragment">
+			    <!-- 질문 입력창 -->
+			    <form class="chat-form" action="/chatbot/question" method="post">
+			        <input type="text" name="question" placeholder="질문을 입력하세요." required>
+			        <button type="submit">전송</button>
+			    </form>
+			</div>
+			
+			
+			<div class="chatbot-icon-container">
+				<a class="chatbot-icon" th:href="@{/chatbot/reset}"><img th:src="@{/images/free-icon-reset-9899316.png}" alt="reset"></a>
+				<a class="chatbot-icon" th:href="@{/}"><img th:src="@{/images/free-icon-font-home-3917743.png}" alt="home"></a>
+			</div>
 		</div>
-	    <form class="chat-form" action="/chatbot/reset" method="get">
-		    <button type="submit">대화 초기화</button>
-		</form>
 	</div>
-	
-	
 	
 	<!-- JS -->
 	<script src="js/jquery-3.7.1.js"></script>
 	<th:block layout:fragment="script">
 		<script>
+			// 브라우저 창을 닫거나 새로고침, 다른 페이지로 이동할 때 발생하는 이벤트
 			window.addEventListener("beforeunload", function() {
 				navigator.sendBeacon("/chatbot/reset");
 			});
-		
 		</script>
 	</th:block>
-	
 	
 </body>
 </html>

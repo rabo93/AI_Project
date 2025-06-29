@@ -4,7 +4,7 @@
 <head>
 <!-- 	<title layout:fragment="title">index.html</title> -->
 	<!-- Custom styles for this template -->
-	<!--	<link href="/css/main.css" rel="stylesheet">-->
+		<link href="/css/chatbot.css" rel="stylesheet">
 </head>
 <body>
 	<div layout:fragment="content">
@@ -15,13 +15,17 @@
 <!-- <!--	        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>-->
 <!-- <!--	        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>-->
 <!-- 	    </header> -->
-		
-		<div class="text-muted fst-italic mb-2">챗봇 아이콘을 클릭하여 채팅을 시작하세요!</div>
-		<br>
-		<div class="icon">
-			<a class="chatbot-icon" th:href="@{/chatbot}"><img th:src="@{/images/free-icon-bot-11189317.png}" alt="chatbot"></a>
+		<div class="section">
+			<div class="text-muted fst-italic mb-2">Q&A 챗봇 서비스</div>
+			<!-- chatbot.html의 fragment만 불러오기 -->
+		    <th:block th:replace="~{chatbot::mainChatFragment}"></th:block>
 		</div>
-		
+		<hr class="section-divider" />
+		<div class="section">
+			<div class="text-muted fst-italic mb-2">PDF 파일 요약</div>
+			<!-- pdf_summary.html의 fragment만 불러오기 -->	    
+		    <th:block th:replace="~{pdf_summary::pdfUploadForm}"></th:block>
+		</div>
 		
 	</div>
 	
@@ -30,6 +34,7 @@
 	<th:block layout:fragment="script">
 		<script>
 		</script>
+		<th:block th:replace="~{pdf_summary::script}"></th:block>
 	</th:block>
 </body>
 </html>
